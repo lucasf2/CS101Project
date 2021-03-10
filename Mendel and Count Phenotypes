@@ -1,0 +1,55 @@
+def mendels_law(hom,het,rec):
+    #total organisms
+    total = hom + het + rec
+    
+    #probability that the organism will have 2 recessive parents
+    r = rec/total * (rec-1)/(total-1)
+    #probability that the organism will have a recessive and heterozygous parent
+    rh = rec/total * (het)/(total-1)
+    #probability that the organism will have a heterozygous and recessive parent
+    hr = het/total * (rec)/(total-1)
+    #probability that the organism will have 2 heterozygous parents
+    h = het/total * (het-1)/(total-1)
+    
+    #probability of organism being recessive based on parents (Punnett Square)
+    rh = rh * .5
+    hr = hr * .5
+    h = h * .25
+    
+    #if 1 parent is homozygous dominant, the organism will always be dominant
+    #return the probability of organism having a dominant allele
+    return (1-(r+rh+hr+h))
+    
+print(mendels_law(2,2,2))
+    
+    
+def count_dom_phenotype(genotypes):
+    #number of dominant offspring
+    dom = 0
+    
+    #probabilities that each couple has of producing a dominant offspring
+    #couples 0-2 have 100% chance of producing a dominant offspring
+    genotypes[3] = genotypes[3] * .75
+    genotypes[4] = genotypes[4] * .5
+    genotypes[5] = genotypes[5] * 0
+    
+    #index through list to find number of dominant offspring
+    for i in range(len(genotypes)):
+        #each couple has 2 offspring
+        if i == 0:
+            dom += genotypes[0] * 2
+        if i == 1:
+            dom += genotypes[1] * 2
+        if i == 2:
+            dom += genotypes[2] * 2
+        if i == 3:
+            dom += genotypes[3] * 2
+        if i == 4:
+            dom += genotypes[4] * 2
+        if i == 5:
+            dom += genotypes[5] * 2
+
+    #return final number of dominant offspring
+    return dom
+            
+print(count_dom_phenotype([1,0,0,1,0,1]))
