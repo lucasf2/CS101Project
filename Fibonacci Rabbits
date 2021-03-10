@@ -1,0 +1,11 @@
+def fibonacci_rabbits(n,k):
+    
+    #base case
+    if n <= 2:
+        return 1
+    
+    #recursively iterate through function
+    else:
+        return fibonacci_rabbits(n-1,k) + fibonacci_rabbits(n-2,k)*k
+
+print(fibonacci_rabbits(5,3))
