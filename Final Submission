@@ -151,4 +151,11 @@ print(count_dom_phenotype([1,0,0,1,0,1]))
 
 def source_rna(protein):
 
-def splice_rna(dna,intron_list):
+def splice_rna(dna, intron_list):
+    dna_new = dna
+    proteins = ''
+    for i in range (0, len(intron_list)):
+        dna_new = dna_new.replace(intron_list[i],'')
+    rna = dna2rna(dna_new)
+    proteins = rna2codons(rna)
+    return proteins
