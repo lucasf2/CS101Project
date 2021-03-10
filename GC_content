@@ -1,0 +1,19 @@
+def GC_content(dna_list):
+    high = 0
+    count_final = 0
+    index = -1
+    count = 0
+    GC_count = 0
+    for i in dna_list:
+        index = index+1
+        count = 0
+        GC_count = 0
+        for n in i:
+            count = count+1
+            if n == "C" or n == "G":
+                GC_count = GC_count+1
+        if GC_count > high:
+            high = GC_count
+            count_final = count
+    percent = ((high/count_final)*100)
+    return(index,percent)
