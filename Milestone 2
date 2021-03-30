@@ -1,7 +1,7 @@
 def get_edges(dna_dict):
-
-  set1=[i[0:3] for i in set]
-  set2=[i[-3:] for i in set]
+  set0 = dna_dict.values()
+  set1=[i[0:3] for i in set0]
+  set2=[i[-3:] for i in set0]
   set3 = list(dna_dict.keys())
   final = []
   
