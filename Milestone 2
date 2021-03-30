@@ -1,0 +1,16 @@
+def get_edges(dna_dict):
+
+  set1=[i[0:3] for i in set]
+  set2=[i[-3:] for i in set]
+  set3 = list(dna_dict.keys())
+  final = []
+  
+  for i in range(len(set1)):
+      for j in range(len(set2)):
+          if i == j:
+              continue
+          if set1[i] == set2[j]:
+              final.insert(i,(set3[i],set3[j]))
+  
+  return final
+
