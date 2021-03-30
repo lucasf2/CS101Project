@@ -1,4 +1,5 @@
 def get_edges(dna_dict):
+
   set0 = dna_dict.values()
   set1=[i[0:3] for i in set0]
   set2=[i[-3:] for i in set0]
@@ -15,6 +16,7 @@ def get_edges(dna_dict):
   return final
 
 def perfect_match(rna):
+
   import math
   n = math.factorial(rna.count('U'))*math.factorial(rna.count('G'))
   return n
