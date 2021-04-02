@@ -1,3 +1,13 @@
+def find_splice(dna_motif, dna):
+  position = 0
+  positions = []
+  while position != -1
+    position=dna.find(dna_motif, position)
+    if position != -1
+      positions.append(position)
+      position += 1
+  return(positions)
+  
 def get_edges(dna_dict):
 
   set0 = dna_dict.values()
