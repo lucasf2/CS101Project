@@ -30,3 +30,37 @@ def perfect_match(rna):
   import math
   n = math.factorial(rna.count('U'))*math.factorial(rna.count('G'))
   return n
+
+def assemble_genome(dna_list):
+    dna_list_cur = dna_list.copy()
+    shortestString = ("", "", -1)
+    ret = ""
+    for i in dna_list_cur:
+        for j in dna_list_cur:
+            if j != i:
+                temp = findShortestSubString(i,j)
+                if len(temp) < shortestString[2] or shortestString[2] == -1:
+                    shortestString = (i, j, len(temp))
+    ret = findShortestSubString(shortestString[0], shortestString[1])
+    dna_list_cur.remove(shortestString[0])
+    dna_list_cur.remove(shortestString[1])
+    print(ret)
+    while len(dna_list_cur) > 0:
+        minString = ("", -1)
+        for i in dna_list_cur:
+            temp = findShortestSubString(ret, i)
+            if len(temp) < minString[1] or minString[1] == -1:
+                minString = (i, len(temp))
+        ret = findShortestSubString(ret, minString[0])
+        dna_list_cur.remove(minString[0])
+        
+    return ret
+    
+def findShortestSubString(str1, str2):
+    maxlen = -1
+    for i in range(len(str2)):
+        if str2[0:i] in str1 and str1[-1 * (i):] == str2[0:i]:
+            maxlen = i
+    if maxlen == -1:
+        return str1 + str2
+    return str1 + str2[(maxlen):]
