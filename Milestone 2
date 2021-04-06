@@ -64,3 +64,30 @@ def findShortestSubString(str1, str2):
     if maxlen == -1:
         return str1 + str2
     return str1 + str2[(maxlen):]
+    
+def rev_palindrome(dna):
+
+  final = []
+
+  for i in range(len(dna)):
+      for j in range(4,12):
+          comp = reverse_complement(dna[i:i+j])
+          if (dna[i:i+j] == comp) and (i+j<= len(dna)):
+              final.append((i,j))
+              
+  return final
+
+def reverse_complement(seq):
+    rna = ''
+    for symbol in seq:
+        if symbol == 'A':
+            rna = rna + 'T'
+        elif symbol == 'T':
+            rna = rna + 'A'
+        elif symbol == 'C':
+            rna = rna + 'G'
+        elif symbol == 'G':
+            rna = rna + 'C'
+    return (rna[::-1])
+
+
