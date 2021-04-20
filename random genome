@@ -1,0 +1,9 @@
+from math import log10
+def random_genome(dna, gc_content):
+    CG_frequency = len(dna.replace("A", "").replace("T", "")) #removes A and T from dna to obtain frequency of C and G
+    AT_frequency = len(dna.replace("C", "").replace("G", "")) #removes C and G from dna to obtain frequency of A and T
+    match_probability = [] #list of random strings constructed with GC-content that will match the dna strings exactly 
+    for i in range(0, len(gc_content)):
+        equation_of_probability = (CG_frequency * log10((gc_content[i]) / 2)) + (AT_frequency * log10((1 - (gc_content[i])) / 2)) #probability equation
+        match_probability.append(equation_of_probability) #adds log probabilities to the list
+    return match_probability
