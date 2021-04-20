@@ -1,0 +1,21 @@
+def shared_motif(dna_list):
+    string1 = dna_list[0]
+    lengthstring1 =len(string1)
+    common_string_list = [] #setup for a list of all the common strings within the given substrings
+
+    for i in range(lengthstring1):
+        for j in range(i+1,lengthstring1+1):
+            possible_common_string = string1[i:j] #sets multiple different strings of different lengths within string1
+            loop = True #for loop stated above
+            for k in range(1, len(dna_list)):
+                if possible_common_string not in dna_list[k]: #if the possible common string does not have common string in the dna list, the loop is false
+                    loop = False
+                    break
+            if loop: #if the loop above is true
+                common_string_list.append(possible_common_string) #if the possible common string has a common string in the dna list, add it to the list of common strings
+
+    longest_similar_string = ""
+    for string in common_string_list: #takes all the common strings found and finds the longest
+        if len(string) > len(longest_similar_string): #loops through all strings and compares to find the longest
+            longest_similar_string = string
+    return longest_similar_string
