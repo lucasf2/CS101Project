@@ -152,7 +152,9 @@ def rev_palindrome(dna):
   return final
 
 def reverse_complement(seq):
+    #initialize reverse complement
     rna = ''
+    #replace each letter in DNA by its complement
     for symbol in seq:
         if symbol == 'A':
             rna = rna + 'T'
@@ -162,6 +164,7 @@ def reverse_complement(seq):
             rna = rna + 'G'
         elif symbol == 'G':
             rna = rna + 'C'
+    #return the final strand in reverse order
     return (rna[::-1])
 
 
