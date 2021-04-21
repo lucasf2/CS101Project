@@ -149,7 +149,7 @@ def rev_palindrome(dna):
             if (dna[i:i+j] == comp) and (i+j<= len(dna)):
                 final.append((i,j))
               
-  return final
+    return final
 
 def reverse_complement(seq):
     #initialize reverse complement
