@@ -120,12 +120,16 @@ def findShortestSubString(str1, str2):
     return str1 + str2[(maxlen):]
     
 def perfect_match(rna):
-
+    #initialize number of matches
+    n = 0
     import math
+    if rna.count('A') != rna.count('U') or rna.count('G') != rna.count('C'):
+        n = 0 
     #perfect match doesn't exist if there is an unmatched node
-    #factorial of either G & U or A & C is the amount of perfect matches for a pair of letters
-    #multiply together factorial of either G & U or A & C
-    n = math.factorial(rna.count('U'))*math.factorial(rna.count('G'))
+    else:
+        #factorial of either G & U or A & C is the amount of perfect matches for a pair of letters
+        #multiply together factorial of either G & U or A & C
+        n = math.factorial(rna.count('U'))*math.factorial(rna.count('G'))
     return n
 
 from math import log10
