@@ -43,20 +43,34 @@ def perfect_match(rna):
   return n
 
 def assemble_genome(dna_list):
-
+    
+    # Copy list to preserve data integrity
     dna_list_cur = dna_list.copy()
+    
+    # Represents the first string, last string, and the length of the combined superstring
     shortestString = ("", "", -1)
+    
+    # Return variable
     ret = ""
+    
+    # Remove 
+    
+    # Find shortest initial superstring
     for i in dna_list_cur:
         for j in dna_list_cur:
             if j != i:
                 temp = findShortestSubString(i,j)
                 if len(temp) < shortestString[2] or shortestString[2] == -1:
                     shortestString = (i, j, len(temp))
+    
+    # Add initial string to return variable and reduce list accordingly
     ret = findShortestSubString(shortestString[0], shortestString[1])
+    
     dna_list_cur.remove(shortestString[0])
     dna_list_cur.remove(shortestString[1])
     print(ret)
+    
+    # Process the remaining elements in the list, updating the return variable every iteration of the loop
     while len(dna_list_cur) > 0:
         minString = ("", -1)
         for i in dna_list_cur:
@@ -68,13 +82,24 @@ def assemble_genome(dna_list):
         
     return ret
     
+    
 def findShortestSubString(str1, str2):
+    
+    # Check for greatest substring by adding sequential characters from the end of str2
     maxlen = -1
     for i in range(len(str2)):
+        # print(str2[0:i])
+        # print(str1[-1 * (i):])
         if str2[0:i] in str1 and str1[-1 * (i):] == str2[0:i]:
+            
+            # Save hightest position in str2
             maxlen = i
+    
+    # If there is no common substring, return combined strings
     if maxlen == -1:
+        # print("No change")
         return str1 + str2
+    # Otherwise, return str1 concatenated with the remaining unique portion of str2
     return str1 + str2[(maxlen):]
     
 def rev_palindrome(dna):
