@@ -1,12 +1,16 @@
 def find_splice(dna_motif, dna):
     position = 0 #Initializes the index at the beginning of the string
     positions = []
-    while position != -1: #Runs through the entirety of the string
-      position=dna.find(dna_motif, position) #Locates the beginning of the dna motif in main string
-      if position != -1:
-        positions.append(position) #Adds location to positions
-        position += 1
-    return(positions)
+    for i, character in enumerate(dna): #Runs through the entirety of the string
+      if dna_motif[position] == character:
+         positions.append(i)
+         position += 1
+         if position == length(dna_motif):
+            break
+    if length(positions) == len(dna_motif):
+         return(positions)
+    else:
+    return[]
   
 def shared_motif(dna_list):
     string1 = dna_list[0]
