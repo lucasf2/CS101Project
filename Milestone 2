@@ -5,12 +5,12 @@ def find_splice(dna_motif, dna):
       if dna_motif[position] == character:
          positions.append(i)
          position += 1
-         if position == length(dna_motif):
+         if position == len(dna_motif):
             break
-    if length(positions) == len(dna_motif):
+    if len(positions) == len(dna_motif):
          return(positions)
     else:
-    return[]
+         return[]
   
 def shared_motif(dna_list):
     string1 = dna_list[0]
